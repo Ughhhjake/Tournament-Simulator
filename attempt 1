@@ -1,0 +1,672 @@
+
+import random
+
+wins = 0
+losses = 0
+rounds = 0
+top8 = 0
+top4 = 0
+finals = 0
+l8 = 0
+l4 = 0
+finalsl = 0
+
+
+# Determine the matchup WR for each matchup you are expecting to play against
+arc = input("How many times out of 100 does your deck win the Arceus Matchup? ")
+Arceus = int(arc)
+
+mewmatch = input("How many times out of 100 does your deck win the Mew Matchup? ")
+Mew = int(mewmatch)
+
+ursh = input("How many times out of 100 does your deck win the Urshifu Matchup? ")
+Urshifu = int(ursh)
+
+mal = input("How many times out of 100 does your deck win the Malamar Matchup? ")
+Malamar = int(mal)
+
+gen = input("How many times out of 100 does your deck win the Gengar Matchup? ")
+Gengar = int(gen)
+
+whim = input("How many times out of 100 does your deck win the Whimsicott Matchup? ")
+Whimsicott = int(whim)
+
+jol = input("How many times out of 100 does your deck win the Jolteon Matchup? ")
+Jolteon = int(jol)
+
+oth = input("How many times out of 100 does your deck win the Other Matchup? ")
+Other = int(oth)
+
+print()
+print('****Day 1****')
+print()
+for x in range(9):
+    rounds = rounds + 1
+    rounds = str(rounds)
+    print("Round " + rounds)
+    # strawpull for your opponents deck
+    oppdeck = int(random.randint(0, 1000))
+    # print(oppdeck)
+
+    # determines the matchup you will play based on RNG
+    if oppdeck < 394:
+        print("Arceus")
+        arcwr = int(random.randint(0, 100))
+        # print(arcwr)
+        if Arceus >= arcwr:
+            print('Win.')
+            wins = wins + 1
+        if Arceus < arcwr:
+            print('Loss.')
+            losses = losses + 1
+
+    elif oppdeck < 701:
+        print("Mew")
+        mewwr = int(random.randint(0, 100))
+        # print(mewwr)
+        if Mew >= mewwr:
+            print('Win.')
+            wins = wins + 1
+        if Mew < mewwr:
+            print('Loss.')
+            losses = losses + 1
+
+    elif oppdeck < 791:
+        print("RS Urshifu")
+        urshwr = int(random.randint(0, 100))
+        # print(urshwr)
+        if Urshifu >= urshwr:
+            print('Win.')
+            wins = wins + 1
+        if Urshifu < urshwr:
+            print('Loss.')
+            losses = losses + 1
+
+    elif oppdeck < 837:
+        print("RS Malamar")
+        malwr = int(random.randint(0, 100))
+        # print(malwr)
+        if Malamar >= malwr:
+            print('Win.')
+            wins = wins + 1
+        if Malamar < malwr:
+            print('Loss.')
+            losses = losses + 1
+
+    elif oppdeck < 873:
+        print("Gengar")
+        genwr = int(random.randint(0, 100))
+        # print(genwr)
+        if Gengar >= genwr:
+            print('Win.')
+            wins = wins + 1
+        if Gengar < genwr:
+            print('Loss.')
+            losses = losses + 1
+
+    elif oppdeck < 898:
+        print("Whimsicott")
+        whiwr = int(random.randint(0, 100))
+        # print(whiwr)
+        if Whimsicott >= whiwr:
+            print('Win.')
+            wins = wins + 1
+        if Whimsicott < whiwr:
+            print('Loss.')
+            losses = losses + 1
+
+    elif oppdeck < 920:
+        print("Jolteon")
+        jolwr = int(random.randint(0, 100))
+        # print(jolwr)
+        if Jolteon >= jolwr:
+            print('Win.')
+            wins = wins + 1
+        if Jolteon < jolwr:
+            print('Loss.')
+            losses = losses + 1
+
+    else:
+        print("Other")
+        othwr = int(random.randint(0, 100))
+        # print(othwr)
+        if Other >= othwr:
+            print('Win.')
+            wins = wins + 1
+        if Other < othwr:
+            print('Loss.')
+            losses = losses + 1
+    print(wins, losses, sep='/')
+    print()
+    rounds = int(rounds)
+
+wins = str(wins)
+losses = str(losses)
+
+#wins and losses bleh
+print(wins + " dubs caught.")
+print(losses + " l's taken.")
+print()
+
+wins = int(wins)
+losses = int(losses)
+
+if wins >= 6:
+    print('****Day 2****')
+    print()
+    for x in range(6):
+        rounds = rounds + 1
+        rounds = str(rounds)
+        print("Round " + rounds)
+        # strawpull for your opponents deck
+        oppdeck = int(random.randint(0, 1000))
+        # print(oppdeck)
+
+        # determines the matchup you will play based on RNG
+        if oppdeck < 394:
+            print("Arceus")
+            arcwr = int(random.randint(0, 100))
+            # print(arcwr)
+            if Arceus >= arcwr:
+                print('Win.')
+                wins = wins + 1
+            if Arceus < arcwr:
+                print('Loss.')
+                losses = losses + 1
+
+        elif oppdeck < 701:
+            print("Mew")
+            mewwr = int(random.randint(0, 100))
+            # print(mewwr)
+            if Mew >= mewwr:
+                print('Win.')
+                wins = wins + 1
+            if Mew < mewwr:
+                print('Loss.')
+                losses = losses + 1
+
+        elif oppdeck < 791:
+            print("RS Urshifu")
+            urshwr = int(random.randint(0, 100))
+            # print(urshwr)
+            if Urshifu >= urshwr:
+                print('Win.')
+                wins = wins + 1
+            if Urshifu < urshwr:
+                print('Loss.')
+                losses = losses + 1
+
+        elif oppdeck < 837:
+            print("RS Malamar")
+            malwr = int(random.randint(0, 100))
+            # print(malwr)
+            if Malamar >= malwr:
+                print('Win.')
+                wins = wins + 1
+            if Malamar < malwr:
+                print('Loss.')
+                losses = losses + 1
+
+        elif oppdeck < 873:
+            print("Gengar")
+            genwr = int(random.randint(0, 100))
+            # print(genwr)
+            if Gengar >= genwr:
+                print('Win.')
+                wins = wins + 1
+            if Gengar < genwr:
+                print('Loss.')
+                losses = losses + 1
+
+        elif oppdeck < 898:
+            print("Whimsicott")
+            whiwr = int(random.randint(0, 100))
+            # print(whiwr)
+            if Whimsicott >= whiwr:
+                print('Win.')
+                wins = wins + 1
+            if Whimsicott < whiwr:
+                print('Loss.')
+                losses = losses + 1
+
+        elif oppdeck < 920:
+            print("Jolteon")
+            jolwr = int(random.randint(0, 100))
+            # print(jolwr)
+            if Jolteon >= jolwr:
+                print('Win.')
+                wins = wins + 1
+            if Jolteon < jolwr:
+                print('Loss.')
+                losses = losses + 1
+
+        else:
+            print("Other")
+            othwr = int(random.randint(0, 100))
+            # print(othwr)
+            if Other >= othwr:
+                print('Win.')
+                wins = wins + 1
+            if Other < othwr:
+                print('Loss.')
+                losses = losses + 1
+        print(wins, losses, sep='/')
+        print()
+        rounds = int(rounds)
+
+    wins = str(wins)
+    losses = str(losses)
+
+    # wins and losses bleh
+    print(wins + " dubs caught.")
+    print(losses + " l's taken.")
+    print()
+
+wins = int(wins)
+losses = int(losses)
+print()
+
+if wins >= 12:
+    print("****Top 8****")
+    print()
+    # strawpull for your opponents deck
+    oppdeck = int(random.randint(0, 1000))
+    # print(oppdeck)
+
+    # determines the matchup you will play based on RNG
+    if oppdeck < 394:
+        print("Arceus")
+        arcwr = int(random.randint(0, 100))
+        # print(arcwr)
+        if Arceus >= arcwr:
+            print('Win.')
+            top8 = top8 + 1
+            wins = wins + 1
+        if Arceus < arcwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    elif oppdeck < 701:
+        print("Mew")
+        mewwr = int(random.randint(0, 100))
+        # print(mewwr)
+        if Mew >= mewwr:
+            print('Win.')
+            top8 = top8 + 1
+            wins = wins + 1
+        if Mew < mewwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    elif oppdeck < 791:
+        print("RS Urshifu")
+        urshwr = int(random.randint(0, 100))
+        # print(urshwr)
+        if Urshifu >= urshwr:
+            print('Win.')
+            top8 = top8 + 1
+            wins = wins + 1
+        if Urshifu < urshwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    elif oppdeck < 837:
+        print("RS Malamar")
+        malwr = int(random.randint(0, 100))
+        # print(malwr)
+        if Malamar >= malwr:
+            print('Win.')
+            top8 = top8 + 1
+            wins = wins + 1
+        if Malamar < malwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    elif oppdeck < 873:
+        print("Gengar")
+        genwr = int(random.randint(0, 100))
+        # print(genwr)
+        if Gengar >= genwr:
+            print('Win.')
+            top8 = top8 + 1
+            wins = wins + 1
+        if Gengar < genwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    elif oppdeck < 898:
+        print("Whimsicott")
+        whiwr = int(random.randint(0, 100))
+        # print(whiwr)
+        if Whimsicott >= whiwr:
+            print('Win.')
+            top8 = top8 + 1
+            wins = wins + 1
+        if Whimsicott < whiwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    elif oppdeck < 920:
+        print("Jolteon")
+        jolwr = int(random.randint(0, 100))
+        # print(jolwr)
+        if Jolteon >= jolwr:
+            print('Win.')
+            top8 = top8 + 1
+            wins = wins + 1
+        if Jolteon < jolwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    else:
+        print("Other")
+        othwr = int(random.randint(0, 100))
+        # print(othwr)
+        if Other >= othwr:
+            print('Win.')
+            top8 = top8 + 1
+            wins = wins + 1
+        if Other < othwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    print(wins, losses, sep='/')
+
+    wins = str(wins)
+    losses = str(losses)
+
+    # wins and losses bleh
+    print()
+    print(wins + " dubs caught.")
+    print(losses + " l's taken.")
+    print()
+
+    wins = int(wins)
+    losses = int(losses)
+    print()
+
+if top8 > 0:
+    print("****Top 4****")
+    print()
+    # strawpull for your opponents deck
+    oppdeck = int(random.randint(0, 1000))
+    # print(oppdeck)
+
+    # determines the matchup you will play based on RNG
+    if oppdeck < 394:
+        print("Arceus")
+        arcwr = int(random.randint(0, 100))
+        # print(arcwr)
+        if Arceus >= arcwr:
+            print('Win.')
+            top4 = top4 + 1
+            wins = wins + 1
+        if Arceus < arcwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+    elif oppdeck < 701:
+        print("Mew")
+        mewwr = int(random.randint(0, 100))
+        # print(mewwr)
+        if Mew >= mewwr:
+            print('Win.')
+            top4 = top4 + 1
+            wins = wins + 1
+        if Mew < mewwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+
+    elif oppdeck < 791:
+        print("RS Urshifu")
+        urshwr = int(random.randint(0, 100))
+        # print(urshwr)
+        if Urshifu >= urshwr:
+            print('Win.')
+            top4 = top4 + 1
+            wins = wins + 1
+        if Urshifu < urshwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+
+    elif oppdeck < 837:
+        print("RS Malamar")
+        malwr = int(random.randint(0, 100))
+        # print(malwr)
+        if Malamar >= malwr:
+            print('Win.')
+            top4 = top4 + 1
+            wins = wins + 1
+        if Malamar < malwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+
+    elif oppdeck < 873:
+        print("Gengar")
+        genwr = int(random.randint(0, 100))
+        # print(genwr)
+        if Gengar >= genwr:
+            print('Win.')
+            top4 = top4 + 1
+            wins = wins + 1
+        if Gengar < genwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+
+    elif oppdeck < 898:
+        print("Whimsicott")
+        whiwr = int(random.randint(0, 100))
+        # print(whiwr)
+        if Whimsicott >= whiwr:
+            print('Win.')
+            top4 = top4 + 1
+            wins = wins + 1
+        if Whimsicott < whiwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+
+    elif oppdeck < 920:
+        print("Jolteon")
+        jolwr = int(random.randint(0, 100))
+        # print(jolwr)
+        if Jolteon >= jolwr:
+            print('Win.')
+            top4 = top4 + 1
+            wins = wins + 1
+        if Jolteon < jolwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+
+    else:
+        print("Other")
+        othwr = int(random.randint(0, 100))
+        # print(othwr)
+        if Other >= othwr:
+            print('Win.')
+            top4 = top4 + 1
+            wins = wins + 1
+        if Other < othwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+    print(wins, losses, sep='/')
+
+    wins = str(wins)
+    losses = str(losses)
+
+    # wins and losses bleh
+    print()
+    print(wins + " dubs caught.")
+    print(losses + " l's taken.")
+    print()
+    print()
+
+    wins = int(wins)
+    losses = int(losses)
+
+if top4 > 0:
+    print("****Finals****")
+    print()
+    # strawpull for your opponents deck
+    oppdeck = int(random.randint(0, 1000))
+    # print(oppdeck)
+
+    # determines the matchup you will play based on RNG
+    if oppdeck < 394:
+        print("Arceus")
+        arcwr = int(random.randint(0, 100))
+        # print(arcwr)
+        if Arceus >= arcwr:
+            print('Win.')
+            finals = finals + 1
+            wins = wins + 1
+        if Arceus < arcwr:
+            print('Loss.')
+            losses = losses + 1
+            finalsl = finalsl + 1
+
+    elif oppdeck < 701:
+        print("Mew")
+        mewwr = int(random.randint(0, 100))
+        # print(mewwr)
+        if Mew >= mewwr:
+            print('Win.')
+            finals = finals + 1
+            wins = wins + 1
+        if Mew < mewwr:
+            print('Loss.')
+            losses = losses + 1
+            finalsl = finalsl + 1
+
+    elif oppdeck < 791:
+        print("RS Urshifu")
+        urshwr = int(random.randint(0, 100))
+        # print(urshwr)
+        if Urshifu >= urshwr:
+            print('Win.')
+            finals = finals + 1
+            wins = wins + 1
+        if Urshifu < urshwr:
+            print('Loss.')
+            losses = losses + 1
+            finalsl = finalsl + 1
+
+    elif oppdeck < 837:
+        print("RS Malamar")
+        malwr = int(random.randint(0, 100))
+        # print(malwr)
+        if Malamar >= malwr:
+            print('Win.')
+            finals = finals + 1
+            wins = wins + 1
+        if Malamar < malwr:
+            print('Loss.')
+            losses = losses + 1
+            finalsl = finalsl + 1
+
+    elif oppdeck < 873:
+        print("Gengar")
+        genwr = int(random.randint(0, 100))
+        # print(genwr)
+        if Gengar >= genwr:
+            print('Win.')
+            finals = finals + 1
+            wins = wins + 1
+        if Gengar < genwr:
+            print('Loss.')
+            losses = losses + 1
+            finalsl = finalsl + 1
+
+    elif oppdeck < 898:
+        print("Whimsicott")
+        whiwr = int(random.randint(0, 100))
+        # print(whiwr)
+        if Whimsicott >= whiwr:
+            print('Win.')
+            finals = finals + 1
+            wins = wins + 1
+        if Whimsicott < whiwr:
+            print('Loss.')
+            losses = losses + 1
+            finalsl = finalsl + 1
+
+    elif oppdeck < 920:
+        print("Jolteon")
+        jolwr = int(random.randint(0, 100))
+        # print(jolwr)
+        if Jolteon >= jolwr:
+            print('Win.')
+            finals = finals + 1
+            wins = wins + 1
+        if Jolteon < jolwr:
+            print('Loss.')
+            losses = losses + 1
+            finalsl = finalsl + 1
+
+    else:
+        print("Other")
+        othwr = int(random.randint(0, 100))
+        # print(othwr)
+        if Other >= othwr:
+            print('Win.')
+            finals = finals + 1
+            wins = wins + 1
+        if Other < othwr:
+            print('Loss.')
+            losses = losses + 1
+            finalsl = finalsl + 1
+
+    print(wins, losses, sep='/')
+
+    wins = str(wins)
+    losses = str(losses)
+
+    # wins and losses bleh
+    print()
+    print(wins + " dubs caught.")
+    print(losses + " l's taken.")
+    print()
+    print()
+
+wins = str(wins)
+losses = str(losses)
+
+if finals > 0:
+    print("You win!")
+    print("Final Record: " + wins + "/" + losses)
+
+if l8 > 0:
+    print("Get Bodied.")
+    print("Final Record: " + wins + "/" + losses)
+
+if l4 > 0:
+    print("Get Bodied.")
+    print("Final Record: " + wins + "/" + losses)
+
+if finalsl > 0:
+    print("Get Bodied.")
+    print("Final Record: " + wins + "/" + losses)
+
+
