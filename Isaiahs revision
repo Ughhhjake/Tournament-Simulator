@@ -1,0 +1,113 @@
+import random
+
+meta_name = ['Arceus', 'Mew', 'Malamar', 'Urshifu', 'Gengar', 'Whimsicott', 'Jolteon', 'Other']
+meta_winrate = []#[2, 5, 7, 8, 9, 6, 4, 1]
+meta_present = []#[4, 3, 2, 1, 1, 1, 1, 1]
+
+
+
+#ask questions
+for key in meta_name:
+
+    win_rate = int(input(f"Out of 10 games, how often do you win the {key} matchup? "))
+    #if num not between 1-10, ask again
+    while win_rate not in range(1,11):
+        win_rate = int(input(f"That is not a valid number\nOut of 10 games, how often do you win the {key} matchup? "))
+    meta_winrate.append(win_rate)
+
+    meta_portion = int(input(f"Out of 10 games, how often do you expect to play against the {key} matchup? "))
+    while meta_portion not in range(1,11):
+        meta_portion = int(input(f"That is not a valid number\nOut of 10 games, how often do you expect to play against the {key} matchup? "))
+    meta_present.append(meta_portion)
+
+
+
+
+
+
+#randomly select 9 meta name based off of meta_winrate
+opponents = random.choices(meta_name, weights=meta_present, k=9)
+print('These are the opponents you will be playing against:')
+for i in range(len(opponents)-1):
+    #print with no new line
+    print(opponents[i] + ', ', end='')
+print(opponents[-1])
+
+#determine if you won or lost or tied for each matchup
+#(W,L,T)
+record = (0,0,0)
+for opponent in opponents:
+   #deternmine if you won or lost or tied based on winrate
+    win_rate = random.randint(1,10)
+    if win_rate < meta_winrate[meta_name.index(opponent)]:
+        record = (record[0]+1, record[1], record[2])
+    elif win_rate > meta_winrate[meta_name.index(opponent)]:
+        record = (record[0], record[1]+1, record[2])
+    else:
+        record = (record[0], record[1], record[2]+1)
+print(f"\nYou won {record[0]} games, lost {record[1]} games, and tied {record[2]} games")
+
+#3 points per win, 1 point per tie, 0 points per loss
+points = record[0]*3 + record[2]
+print(f"\nYou have {points} points")
+
+
+
+
+
+
+def day2(record, meta_name, meta_winrate, meta_present):
+    #select 6 more opponents
+    day2_opponents = random.choices(meta_name, weights=meta_present, k=6)
+    print('These are the opponents you will be playing against on day 2:')
+    for i in range(len(day2_opponents)-1):
+        print(day2_opponents[i] + ', ', end='')
+    print(day2_opponents[-1])
+
+    for opp in day2_opponents:
+        win_rate = random.randint(1,10)
+        if win_rate < meta_winrate[meta_name.index(opp)]:
+            record = (record[0]+1, record[1], record[2])
+        elif win_rate > meta_winrate[meta_name.index(opp)]:
+            record = (record[0], record[1]+1, record[2])
+        else:
+            record = (record[0], record[1], record[2]+1)
+
+    print(f"\nYou won {record[0]} games, lost {record[1]} games, and tied {record[2]} games")
+
+    #3 points per win, 1 point per tie, 0 points per loss
+    points = record[0]*3 + record[2]
+    #if greater than 33 points, you make Top 8
+    if points >= 33:
+        print("You made Top 8!!!!!!")
+    else:
+        print("Ah so close! Nice job on day 2 though!")
+
+    for i in range(3):
+        #select opponent
+        opp = random.choices(meta_name, weights=meta_present, k=1)[0]
+        if random.randint(1,10) < meta_winrate[meta_name.index(opp)]:
+            if i == 0:
+                print(f"You won against {opp} and are moving to Top 4!")
+            elif i == 1:
+                print(f"You won against {opp} and are moving to the finals!")
+            else:
+                print(f"You won against {opp} and you are the Champion! Congratulations!")
+        else:
+            if i == 0:
+                print(f"You lost against {opp}, nice job on Top 8!")
+            elif i == 1:
+                print(f"You lost against {opp}, nice job on the Top4!")
+            else:
+                print(f"You lost against {opp}, nice job on making finals!")
+            break
+
+
+
+
+#if you have 19 or more points, you make day 2
+if points >= 19:
+    print("You made day 2!!!!!!")
+    day2(record, meta_name, meta_winrate, meta_present)
+else:
+    print("Better luck next time")
