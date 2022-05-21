@@ -1,0 +1,37 @@
+#determine chance of winning a random round against a random opponent
+arceus = int(input("How many times out of 100 does your deck win the Arceus Matchup? "))
+arceusm = int(input("What percent of the field do you expect to play Arceus. (40) "))
+arcwr = ((arceus * arceusm) / 100)
+
+mew = int(input("How many times out of 100 does your deck win the Mew Matchup? "))
+mewm = int(input("What percent of the field do you expect to play Mew. (30) "))
+mewwr = ((mew * mewm) / 100)
+
+urshifu = int(input("How many times out of 100 does your deck win the Urshifu Matchup? "))
+urshifum = int(input("What percent of the field do you expect to play Urshifu. (10) "))
+urswr = ((urshifu * urshifum) / 100)
+
+malamar = int(input("How many times out of 100 does your deck win the Malamar Matchup? "))
+malamarw = int(input("What percent of the field do you expect to play Malamar. (2) "))
+malwr = ((malamar * malamarw) / 100)
+
+gengar = int(input("How many times out of 100 does your deck win the Gengar Matchup? "))
+gengarm = int(input("What percent of the field do you expect to play Gengar. (1) "))
+genwr = ((gengar * gengarm) / 100)
+
+whimsicott = int(input("How many times out of 100 does your deck win the Whimsicott Matchup? "))
+whimsicottm = int(input("What percent of the field do you expect to play Whimsicott. (11) "))
+whiwr = ((whimsicott * whimsicottm) / 100)
+
+jolteon = int(input("How many times out of 100 does your deck win the Jolteon Matchup? "))
+jolteonm = int(input("What percent of the field do you expect to play Jolteon. (1) "))
+jolwr = ((jolteon * jolteonm) / 100)
+
+other = int(input("How many times out of 100 does your deck win the Other Matchup? "))
+otherm = int(input("What percent of the field do you expect to play Other. (5) "))
+othwr = ((other * otherm) / 100)
+
+winrate = print(arcwr + mewwr + urswr + genwr + malwr + jolwr + othwr + whiwr)
+
+
+
