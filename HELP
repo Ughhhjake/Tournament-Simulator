@@ -1,0 +1,22 @@
+import math
+
+rounds = 9
+wins = 6
+winrate = 47
+winrate = winrate / 100
+
+# ((math.factorial(rounds) / (math.factorial(wins) * math.factorial(rounds - wins))) * (winrate ** wins) * ((1 -
+# winrate) ** (rounds - wins)))
+
+dub6 = ((math.factorial(rounds) / (math.factorial(wins) * math.factorial(rounds - wins))) * (winrate ** wins) * ((1 - winrate) ** (rounds - wins)))
+wins = wins + 1
+dub7 = ((math.factorial(rounds) / (math.factorial(wins) * math.factorial(rounds - wins))) * (winrate ** wins) * ((1 - winrate) ** (rounds - wins)))
+wins = wins + 1
+dub8 = ((math.factorial(rounds) / (math.factorial(wins) * math.factorial(rounds - wins))) * (winrate ** wins) * ((1 - winrate) ** (rounds - wins)))
+win = wins + 1
+dub9 = ((math.factorial(rounds) / (math.factorial(wins) * math.factorial(rounds - wins))) * (winrate ** wins) * ((1 - winrate) ** (rounds - wins)))
+milk = dub6 + dub7 + dub8 + dub9
+print(round(milk, 2) * 100)
+
+
+#this gives an outcome of like 21 or so, and i want it to be able to work using a loop and then adding the sum of the numbers the loop gives
