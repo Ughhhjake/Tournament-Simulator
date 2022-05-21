@@ -20,3 +20,24 @@ print(round(milk, 2) * 100)
 
 
 #this gives an outcome of like 21 or so, and i want it to be able to work using a loop and then adding the sum of the numbers the loop gives
+
+
+import math
+
+rounds = 9
+wins = 6
+winrate = 47
+winrate = winrate / 100
+sum = 0
+
+# ((math.factorial(rounds) / (math.factorial(wins) * math.factorial(rounds - wins))) * (winrate ** wins) * ((1 -
+# winrate) ** (rounds - wins)))
+
+for x in range(4):
+    num = ((math.factorial(rounds) / (math.factorial(wins) * math.factorial(rounds - wins)))
+           * (winrate ** wins) * ((1 - winrate) ** (rounds - wins)))
+    wins = wins + 1
+    sum = sum + num
+
+sum = sum * 100
+print(round(sum, 2))
