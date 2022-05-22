@@ -1,3 +1,6 @@
+import random
+import math
+
 #determine chance of winning a random round against a random opponent
 arceus = int(input("How many times out of 100 does your deck win the Arceus Matchup? "))
 arceusm = int(input("What percent of the field do you expect to play Arceus. (40) "))
@@ -12,8 +15,8 @@ urshifum = int(input("What percent of the field do you expect to play Urshifu. (
 urswr = ((urshifu * urshifum) / 100)
 
 malamar = int(input("How many times out of 100 does your deck win the Malamar Matchup? "))
-malamarw = int(input("What percent of the field do you expect to play Malamar. (2) "))
-malwr = ((malamar * malamarw) / 100)
+malamarm = int(input("What percent of the field do you expect to play Malamar. (2) "))
+malwr = ((malamar * malamarm) / 100)
 
 gengar = int(input("How many times out of 100 does your deck win the Gengar Matchup? "))
 gengarm = int(input("What percent of the field do you expect to play Gengar. (1) "))
@@ -31,7 +34,18 @@ other = int(input("How many times out of 100 does your deck win the Other Matchu
 otherm = int(input("What percent of the field do you expect to play Other. (5) "))
 othwr = ((other * otherm) / 100)
 
-winrate = print(arcwr + mewwr + urswr + genwr + malwr + jolwr + othwr + whiwr)
+winrate = print(round(arcwr + mewwr + urswr + genwr + malwr + jolwr + othwr + whiwr, 2))
 
+for x in range (9):
+    # so you can turn decks into variables and then ask what they are to get a different assortment and percentage
+    decks = ["Arceus", "Mew", 'Urshifu', 'Malamar', 'Gengar', 'Whimsicott', 'Jolteon', 'Other']
+    matchup = random.choices(
+        decks, cum_weights=((arceusm), (arceusm + mewm), (arceusm + mewm + urshifum),
+                            (arceusm + mewm + urshifum + malamarm), (arceusm + mewm + urshifum + malamarm + gengarm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm + whimsicottm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm + otherm)), k=1)
+
+    print(matchup)
 
 
