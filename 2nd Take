@@ -1,0 +1,717 @@
+import random
+import math
+import numpy as np
+
+
+wins = 0
+losses = 0
+rounds = 0
+top8 = 0
+top4 = 0
+finals = 0
+l8 = 0
+l4 = 0
+finalsl = 0
+sum = 0
+
+
+#determine chance of winning a random round against a random opponent
+arceus = int(input("How many times out of 100 does your deck win the Arceus Matchup? "))
+arceusm = int(input("What percent of the field do you expect to play Arceus. (40) "))
+arcwr = ((arceus * arceusm) / 100)
+
+mew = int(input("How many times out of 100 does your deck win the Mew Matchup? "))
+mewm = int(input("What percent of the field do you expect to play Mew. (30) "))
+mewwr = ((mew * mewm) / 100)
+
+urshifu = int(input("How many times out of 100 does your deck win the Urshifu Matchup? "))
+urshifum = int(input("What percent of the field do you expect to play Urshifu. (10) "))
+urswr = ((urshifu * urshifum) / 100)
+
+malamar = int(input("How many times out of 100 does your deck win the Malamar Matchup? "))
+malamarm = int(input("What percent of the field do you expect to play Malamar. (2) "))
+malwr = ((malamar * malamarm) / 100)
+
+gengar = int(input("How many times out of 100 does your deck win the Gengar Matchup? "))
+gengarm = int(input("What percent of the field do you expect to play Gengar. (1) "))
+genwr = ((gengar * gengarm) / 100)
+
+whimsicott = int(input("How many times out of 100 does your deck win the Whimsicott Matchup? "))
+whimsicottm = int(input("What percent of the field do you expect to play Whimsicott. (11) "))
+whiwr = ((whimsicott * whimsicottm) / 100)
+
+jolteon = int(input("How many times out of 100 does your deck win the Jolteon Matchup? "))
+jolteonm = int(input("What percent of the field do you expect to play Jolteon. (1) "))
+jolwr = ((jolteon * jolteonm) / 100)
+
+other = int(input("How many times out of 100 does your deck win the Other Matchup? "))
+otherm = int(input("What percent of the field do you expect to play Other. (5) "))
+othwr = ((other * otherm) / 100)
+
+kekw = (round(arcwr + mewwr + urswr + genwr + malwr + jolwr + othwr + whiwr, 2))
+winrate = (int(kekw) / 100)
+
+
+totalr = int(input("How many rounds will this tournament have? "))
+wneeded = int(input("How many rounds do you have to win to make Day 2 of competition? "))
+
+# ((math.factorial(rounds) / (math.factorial(wins) * math.factorial(rounds - wins))) * (winrate ** wins) * ((1 -
+# winrate) ** (rounds - wins)))
+
+for x in range(totalr - wneeded + 1):
+    num = ((math.factorial(totalr) / (math.factorial(wneeded) * math.factorial(totalr - wneeded)))
+           * (winrate ** wneeded) * ((1 - winrate) ** (totalr - wneeded)))
+    wneeded = wneeded + 1
+    sum = sum + num
+
+sum = sum * 100
+milk = (str(round(sum, 2)))
+print()
+print("Given accurate data; you have a " + milk + "% chance of making Day 2.")
+
+
+print()
+print('****Day 1****')
+print()
+
+for x in range (9):
+    rounds = rounds + 1
+    rounds = str(rounds)
+    print("Round " + rounds)
+    # so you can turn decks into variables and then ask what they are to get a different assortment and percentage
+    #i can set "decks" to a list of variables and then make the variables input statements to get them to change
+    decks = "Arceus", "Mew", 'Urshifu', 'Malamar', 'Gengar', 'Whimsicott', 'Jolteon', 'Other'
+    matchup = random.choices(
+        decks, cum_weights=((arceusm), (arceusm + mewm), (arceusm + mewm + urshifum),
+                            (arceusm + mewm + urshifum + malamarm), (arceusm + mewm + urshifum + malamarm + gengarm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm + whimsicottm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm + otherm)), k=1)
+#i can determine what deck they are going to play against
+    #i need to be able to have the program know that these words have a value attached to them
+    #i also need there to be a number generated that will determine that outcome of the match
+    # strawpull for your opponents deck
+    oppdeck = int(random.randint(0, 100))
+
+    # determines the matchup you will play based on RNG
+    if oppdeck < int(arceusm):
+        print("Arceus")
+        arcwr = int(random.randint(0, 100))
+        # print(arcwr)
+        if arceus >= arcwr:
+            print('Win.')
+            wins = wins + 1
+        if arceus < arcwr:
+            print('Loss.')
+            losses = losses + 1
+
+    elif oppdeck < int(arceusm + mewm):
+        print("Mew")
+        mewwr = int(random.randint(0, 100))
+        # print(mewwr)
+        if mew >= mewwr:
+            print('Win.')
+            wins = wins + 1
+        if mew < mewwr:
+            print('Loss.')
+            losses = losses + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum):
+        print("RS Urshifu")
+        urshwr = int(random.randint(0, 100))
+        # print(urshwr)
+        if urshifu >= urshwr:
+            print('Win.')
+            wins = wins + 1
+        if urshifu < urshwr:
+            print('Loss.')
+            losses = losses + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm):
+        print("RS Malamar")
+        malwr = int(random.randint(0, 100))
+        # print(malwr)
+        if malamar >= malwr:
+            print('Win.')
+            wins = wins + 1
+        if malamar < malwr:
+            print('Loss.')
+            losses = losses + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm + gengarm):
+        print("Gengar")
+        genwr = int(random.randint(0, 100))
+        # print(genwr)
+        if gengar >= genwr:
+            print('Win.')
+            wins = wins + 1
+        if gengar < genwr:
+            print('Loss.')
+            losses = losses + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm + gengarm + whimsicottm):
+        print("Whimsicott")
+        whiwr = int(random.randint(0, 100))
+        # print(whiwr)
+        if whimsicott >= whiwr:
+            print('Win.')
+            wins = wins + 1
+        if whimsicott < whiwr:
+            print('Loss.')
+            losses = losses + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm):
+        print("Jolteon")
+        jolwr = int(random.randint(0, 100))
+        # print(jolwr)
+        if jolteon >= jolwr:
+            print('Win.')
+            wins = wins + 1
+        if jolteon < jolwr:
+            print('Loss.')
+            losses = losses + 1
+
+    else:
+        print("Other")
+        othwr = int(random.randint(0, 100))
+        # print(othwr)
+        if other >= othwr:
+            print('Win.')
+            wins = wins + 1
+        if other < othwr:
+            print('Loss.')
+            losses = losses + 1
+
+    print(wins, losses, sep='/')
+    print()
+    rounds = int(rounds)
+
+if wins >= 6:
+    print('****Day 2****')
+    print()
+    for x in range(6):
+        rounds = rounds + 1
+        rounds = str(rounds)
+        print("Round " + rounds)
+        # so you can turn decks into variables and then ask what they are to get a different assortment and percentage
+        # i can set "decks" to a list of variables and then make the variables input statements to get them to change
+        decks = "Arceus", "Mew", 'Urshifu', 'Malamar', 'Gengar', 'Whimsicott', 'Jolteon', 'Other'
+        matchup = random.choices(
+            decks, cum_weights=((arceusm), (arceusm + mewm), (arceusm + mewm + urshifum),
+                                (arceusm + mewm + urshifum + malamarm),
+                                (arceusm + mewm + urshifum + malamarm + gengarm),
+                                (arceusm + mewm + urshifum + malamarm + gengarm + whimsicottm),
+                                (arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm),
+                                (arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm + otherm)),
+            k=1)
+        # i can determine what deck they are going to play against
+        # i need to be able to have the program know that these words have a value attached to them
+        # i also need there to be a number generated that will determine that outcome of the match
+        # strawpull for your opponents deck
+        oppdeck = int(random.randint(0, 100))
+
+        # determines the matchup you will play based on RNG
+        if oppdeck < int(arceusm):
+            print("Arceus")
+            arcwr = int(random.randint(0, 100))
+            # print(arcwr)
+            if arceus >= arcwr:
+                print('Win.')
+                wins = wins + 1
+            if arceus < arcwr:
+                print('Loss.')
+                losses = losses + 1
+
+        elif oppdeck < int(arceusm + mewm):
+            print("Mew")
+            mewwr = int(random.randint(0, 100))
+            # print(mewwr)
+            if mew >= mewwr:
+                print('Win.')
+                wins = wins + 1
+            if mew < mewwr:
+                print('Loss.')
+                losses = losses + 1
+
+        elif oppdeck < int(arceusm + mewm + urshifum):
+            print("RS Urshifu")
+            urshwr = int(random.randint(0, 100))
+            # print(urshwr)
+            if urshifu >= urshwr:
+                print('Win.')
+                wins = wins + 1
+            if urshifu < urshwr:
+                print('Loss.')
+                losses = losses + 1
+
+        elif oppdeck < int(arceusm + mewm + urshifum + malamarm):
+            print("RS Malamar")
+            malwr = int(random.randint(0, 100))
+            # print(malwr)
+            if malamar >= malwr:
+                print('Win.')
+                wins = wins + 1
+            if malamar < malwr:
+                print('Loss.')
+                losses = losses + 1
+
+        elif oppdeck < int(arceusm + mewm + urshifum + malamarm + gengarm):
+            print("Gengar")
+            genwr = int(random.randint(0, 100))
+            # print(genwr)
+            if gengar >= genwr:
+                print('Win.')
+                wins = wins + 1
+            if gengar < genwr:
+                print('Loss.')
+                losses = losses + 1
+
+        elif oppdeck < int(arceusm + mewm + urshifum + malamarm + gengarm + whimsicottm):
+            print("Whimsicott")
+            whiwr = int(random.randint(0, 100))
+            # print(whiwr)
+            if whimsicott >= whiwr:
+                print('Win.')
+                wins = wins + 1
+            if whimsicott < whiwr:
+                print('Loss.')
+                losses = losses + 1
+
+        elif oppdeck < int(arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm):
+            print("Jolteon")
+            jolwr = int(random.randint(0, 100))
+            # print(jolwr)
+            if jolteon >= jolwr:
+                print('Win.')
+                wins = wins + 1
+            if jolteon < jolwr:
+                print('Loss.')
+                losses = losses + 1
+
+        else:
+            print("Other")
+            othwr = int(random.randint(0, 100))
+            # print(othwr)
+            if other >= othwr:
+                print('Win.')
+                wins = wins + 1
+            if other < othwr:
+                print('Loss.')
+                losses = losses + 1
+
+        print(wins, losses, sep='/')
+        print()
+        rounds = int(rounds)
+
+if wins >= 12:
+    print("****Top 8****")
+    print()
+
+    # so you can turn decks into variables and then ask what they are to get a different assortment and percentage
+    # i can set "decks" to a list of variables and then make the variables input statements to get them to change
+    decks = "Arceus", "Mew", 'Urshifu', 'Malamar', 'Gengar', 'Whimsicott', 'Jolteon', 'Other'
+    matchup = random.choices(
+        decks, cum_weights=((arceusm), (arceusm + mewm), (arceusm + mewm + urshifum),
+                            (arceusm + mewm + urshifum + malamarm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm + whimsicottm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm + otherm)),
+        k=1)
+    # i can determine what deck they are going to play against
+    # i need to be able to have the program know that these words have a value attached to them
+    # i also need there to be a number generated that will determine that outcome of the match
+    # strawpull for your opponents deck
+    oppdeck = int(random.randint(0, 100))
+
+    # determines the matchup you will play based on RNG
+    if oppdeck < int(arceusm):
+        print("Arceus")
+        arcwr = int(random.randint(0, 100))
+        # print(arcwr)
+        if arceus >= arcwr:
+            print('Win.')
+            wins = wins + 1
+            top8 = top8 + 1
+        if arceus < arcwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    elif oppdeck < int(arceusm + mewm):
+        print("Mew")
+        mewwr = int(random.randint(0, 100))
+        # print(mewwr)
+        if mew >= mewwr:
+            print('Win.')
+            wins = wins + 1
+            top8 = top8 + 1
+        if mew < mewwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum):
+        print("RS Urshifu")
+        urshwr = int(random.randint(0, 100))
+        # print(urshwr)
+        if urshifu >= urshwr:
+            print('Win.')
+            wins = wins + 1
+            top8 = top8 + 1
+        if urshifu < urshwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm):
+        print("RS Malamar")
+        malwr = int(random.randint(0, 100))
+        # print(malwr)
+        if malamar >= malwr:
+            print('Win.')
+            wins = wins + 1
+            top8 = top8 + 1
+        if malamar < malwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm + gengarm):
+        print("Gengar")
+        genwr = int(random.randint(0, 100))
+        # print(genwr)
+        if gengar >= genwr:
+            print('Win.')
+            wins = wins + 1
+            top8 = top8 + 1
+        if gengar < genwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm + gengarm + whimsicottm):
+        print("Whimsicott")
+        whiwr = int(random.randint(0, 100))
+        # print(whiwr)
+        if whimsicott >= whiwr:
+            print('Win.')
+            wins = wins + 1
+            top8 = top8 + 1
+        if whimsicott < whiwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm):
+        print("Jolteon")
+        jolwr = int(random.randint(0, 100))
+        # print(jolwr)
+        if jolteon >= jolwr:
+            print('Win.')
+            wins = wins + 1
+            top8 = top8 + 1
+        if jolteon < jolwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    else:
+        print("Other")
+        othwr = int(random.randint(0, 100))
+        # print(othwr)
+        if other >= othwr:
+            print('Win.')
+            wins = wins + 1
+            top8 = top8 + 1
+        if other < othwr:
+            print('Loss.')
+            losses = losses + 1
+            l8 = l8 + 1
+
+    print(wins, losses, sep='/')
+    print()
+
+if top8 > 0:
+    print("****Top 4****")
+    print()
+
+    # so you can turn decks into variables and then ask what they are to get a different assortment and percentage
+    # i can set "decks" to a list of variables and then make the variables input statements to get them to change
+    decks = "Arceus", "Mew", 'Urshifu', 'Malamar', 'Gengar', 'Whimsicott', 'Jolteon', 'Other'
+    matchup = random.choices(
+        decks, cum_weights=((arceusm), (arceusm + mewm), (arceusm + mewm + urshifum),
+                            (arceusm + mewm + urshifum + malamarm), (arceusm + mewm + urshifum + malamarm + gengarm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm + whimsicottm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm + otherm)), k=1)
+    # i can determine what deck they are going to play against
+    # i need to be able to have the program know that these words have a value attached to them
+    # i also need there to be a number generated that will determine that outcome of the match
+    # strawpull for your opponents deck
+    oppdeck = int(random.randint(0, 100))
+
+    # determines the matchup you will play based on RNG
+    if oppdeck < int(arceusm):
+        print("Arceus")
+        arcwr = int(random.randint(0, 100))
+        # print(arcwr)
+        if arceus >= arcwr:
+            print('Win.')
+            wins = wins + 1
+            top4 = top4 + 1
+        if arceus < arcwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+    elif oppdeck < int(arceusm + mewm):
+        print("Mew")
+        mewwr = int(random.randint(0, 100))
+        # print(mewwr)
+        if mew >= mewwr:
+            print('Win.')
+            wins = wins + 1
+            top4 = top4 + 1
+        if mew < mewwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum):
+        print("RS Urshifu")
+        urshwr = int(random.randint(0, 100))
+        # print(urshwr)
+        if urshifu >= urshwr:
+            print('Win.')
+            wins = wins + 1
+            top4 = top4 + 1
+        if urshifu < urshwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm):
+        print("RS Malamar")
+        malwr = int(random.randint(0, 100))
+        # print(malwr)
+        if malamar >= malwr:
+            print('Win.')
+            wins = wins + 1
+            top4 = top4 + 1
+        if malamar < malwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm + gengarm):
+        print("Gengar")
+        genwr = int(random.randint(0, 100))
+        # print(genwr)
+        if gengar >= genwr:
+            print('Win.')
+            wins = wins + 1
+            top4 = top4 + 1
+        if gengar < genwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm + gengarm + whimsicottm):
+        print("Whimsicott")
+        whiwr = int(random.randint(0, 100))
+        # print(whiwr)
+        if whimsicott >= whiwr:
+            print('Win.')
+            wins = wins + 1
+            top4 = top4 + 1
+        if whimsicott < whiwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm):
+        print("Jolteon")
+        jolwr = int(random.randint(0, 100))
+        # print(jolwr)
+        if jolteon >= jolwr:
+            print('Win.')
+            wins = wins + 1
+            top4 = top4 + 1
+        if jolteon < jolwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+    else:
+        print("Other")
+        othwr = int(random.randint(0, 100))
+        # print(othwr)
+        if other >= othwr:
+            print('Win.')
+            wins = wins + 1
+            top4 = top4 + 1
+        if other < othwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+    print(wins, losses, sep='/')
+    print()
+
+if top4 > 0:
+    print("****Finals****")
+    print()
+    # so you can turn decks into variables and then ask what they are to get a different assortment and percentage
+    # i can set "decks" to a list of variables and then make the variables input statements to get them to change
+    decks = "Arceus", "Mew", 'Urshifu', 'Malamar', 'Gengar', 'Whimsicott', 'Jolteon', 'Other'
+    matchup = random.choices(
+        decks, cum_weights=((arceusm), (arceusm + mewm), (arceusm + mewm + urshifum),
+                            (arceusm + mewm + urshifum + malamarm), (arceusm + mewm + urshifum + malamarm + gengarm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm + whimsicottm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm),
+                            (arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm + otherm)), k=1)
+    # i can determine what deck they are going to play against
+    # i need to be able to have the program know that these words have a value attached to them
+    # i also need there to be a number generated that will determine that outcome of the match
+    # strawpull for your opponents deck
+    oppdeck = int(random.randint(0, 100))
+
+    # determines the matchup you will play based on RNG
+    if oppdeck < int(arceusm):
+        print("Arceus")
+        arcwr = int(random.randint(0, 100))
+        # print(arcwr)
+        if arceus >= arcwr:
+            print('Win.')
+            wins = wins + 1
+            finals = finals + 1
+        if arceus < arcwr:
+            print('Loss.')
+            losses = losses + 1
+            finalsl = finalsl + 1
+
+    elif oppdeck < int(arceusm + mewm):
+        print("Mew")
+        mewwr = int(random.randint(0, 100))
+        # print(mewwr)
+        if mew >= mewwr:
+            print('Win.')
+            wins = wins + 1
+            finals = finals + 1
+        if mew < mewwr:
+            print('Loss.')
+            losses = losses + 1
+            finalsl = finalsl + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum):
+        print("RS Urshifu")
+        urshwr = int(random.randint(0, 100))
+        # print(urshwr)
+        if urshifu >= urshwr:
+            print('Win.')
+            wins = wins + 1
+            finals = finals + 1
+        if urshifu < urshwr:
+            print('Loss.')
+            losses = losses + 1
+            finalsl = finalsl + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm):
+        print("RS Malamar")
+        malwr = int(random.randint(0, 100))
+        # print(malwr)
+        if malamar >= malwr:
+            print('Win.')
+            wins = wins + 1
+            finals = finals + 1
+        if malamar < malwr:
+            print('Loss.')
+            losses = losses + 1
+            finalsl = finalsl + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm + gengarm):
+        print("Gengar")
+        genwr = int(random.randint(0, 100))
+        # print(genwr)
+        if gengar >= genwr:
+            print('Win.')
+            wins = wins + 1
+            finals = finals + 1
+        if gengar < genwr:
+            print('Loss.')
+            losses = losses + 1
+            finalsl = finalsl + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm + gengarm + whimsicottm):
+        print("Whimsicott")
+        whiwr = int(random.randint(0, 100))
+        # print(whiwr)
+        if whimsicott >= whiwr:
+            print('Win.')
+            wins = wins + 1
+            finals = finals + 1
+        if whimsicott < whiwr:
+            print('Loss.')
+            losses = losses + 1
+            finalsl = finalsl + 1
+
+    elif oppdeck < int(arceusm + mewm + urshifum + malamarm + gengarm + jolteonm + whimsicottm):
+        print("Jolteon")
+        jolwr = int(random.randint(0, 100))
+        # print(jolwr)
+        if jolteon >= jolwr:
+            print('Win.')
+            wins = wins + 1
+            finals = finals + 1
+        if jolteon < jolwr:
+            print('Loss.')
+            losses = losses + 1
+            finalsl = finals + 1
+
+    else:
+        print("Other")
+        othwr = int(random.randint(0, 100))
+        # print(othwr)
+        if other >= othwr:
+            print('Win.')
+            wins = wins + 1
+            top4 = top4 + 1
+        if other < othwr:
+            print('Loss.')
+            losses = losses + 1
+            l4 = l4 + 1
+
+    print(wins, losses, sep='/')
+    print()
+
+
+wins = int(wins)
+losses = int(losses)
+if wins < 12:
+    wins = str(wins)
+    losses = str(losses)
+    print("You did not advance, thank you for playing and better luck next time!")
+    print("Final Record: " + wins + "/" + losses)
+
+wins = str(wins)
+losses = str(losses)
+
+
+if finals > 0:
+    print("You win!")
+    print("Final Record: " + wins + "/" + losses)
+
+if l8 > 0:
+    print("Get Bodied.")
+    print("Final Record: " + wins + "/" + losses)
+
+if l4 > 0:
+    print("Get Bodied.")
+    print("Final Record: " + wins + "/" + losses)
+
+if finalsl > 0:
+    print("Get Bodied.")
+    print("Final Record: " + wins + "/" + losses)
+
+
